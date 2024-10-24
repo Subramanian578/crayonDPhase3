@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-const ProgressBar = ({ progress }) => {
+const ProgressBar = ({progress}) => {
   return (
     <View style={styles.container}>
       {/* Progress Bar */}
       <View style={styles.progressBarBackground}>
-        <View style={[styles.progressBarFill, { width: `${progress}%` }]} />
+        <View style={[styles.progressBarFill, {width: `${progress}%`}]} />
       </View>
-      
+
       {/* Percentage Text */}
       <Text style={styles.percentageText}>{progress}%</Text>
     </View>

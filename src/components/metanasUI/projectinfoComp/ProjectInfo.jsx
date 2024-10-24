@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import ProgressBar from './progessbar';
-import AnimatedText from './animatedText';
+import ProgressBar from './Progessbar';
+import AnimatedText from '../AnimatedText';
 
 export default function ProjectInfo() {
   return (

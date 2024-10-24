@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
-import RightArrow from '../../assets/icons/Rightarrow';
+import RightArrow from '../../../assets/icons/Rightarrow';
 import {useNavigation} from '@react-navigation/native';
 
 export default function TaskDetailRow({

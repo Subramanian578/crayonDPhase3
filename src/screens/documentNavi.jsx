@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import Appbar from '../components/metanasUI/appbar';
+import Appbar from '../components/metanasUI/Appbar';
 import {useNavigation} from '@react-navigation/native';
 
 const documents = [
