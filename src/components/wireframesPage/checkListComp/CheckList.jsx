@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import TaskDetailHeader from '../metanasUI/taskDetailHeader';
-import Checkbox from './checkbox';
+import TaskDetailHeader from '../../metanasUI/taskdetailsComp/taskDetailHeader';
+import Checkbox from './CheckBox';
 
 export default function Checklist() {
   return (

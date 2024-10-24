@@ -1,14 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-// import Navigation from './src/navigation/navigation';
-import MetanasDesign from './src/screens/metanasDesign';
-import Navigation from './src/navigation/navigation';
+import Navigation from './src/navigation/Navigation';
 
 export default function App() {
   return (
     <View style={{flex: 1, backgroundColor: 'rgb(240, 243, 246)'}}>
       <Navigation/>
-      {/* <MetanasDesign/> */}
     </View>
   );
 }

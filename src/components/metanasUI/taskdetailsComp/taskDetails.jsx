@@ -1,6 +1,6 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import DownArrow from '../../assets/icons/downarrow';
+import DownArrow from '../../../assets/icons/downarrow';
 import TaskDetailRow from './taskDetailRow';
 import TaskDetailHeader from './taskDetailHeader';
 

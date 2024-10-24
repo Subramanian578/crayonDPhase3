@@ -2,10 +2,10 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator } from '@react-navigation/native-stack';
-import MetanasDesign from '../screens/metanasDesign';
-import Wireframes from '../screens/wireframes';
-import DocumentsPage from '../screens/documents';
-import MoreDocuments from '../screens/documentNavi';
+import MetanasDesign from '../screens/Metanasdesign';
+import Wireframes from '../screens/Wireframes';
+import DocumentsPage from '../screens/Documents';
+import MoreDocuments from '../screens/DocumentNavi';
 
 const Stack = createNativeStackNavigator ();
 

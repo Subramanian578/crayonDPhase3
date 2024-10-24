@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import CheckboxFill from '../../assets/icons/checkBoxFill';
-import CheckboxOutline from '../../assets/icons/checkboxOutline';
+import CheckboxFill from '../../../assets/icons/checkBoxFill';
+import CheckboxOutline from '../../../assets/icons/checkboxOutline';
 
 export default function Checkbox() {
   const [tasks, setTasks] = useState([
