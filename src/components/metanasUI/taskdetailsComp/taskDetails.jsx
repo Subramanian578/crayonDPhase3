@@ -1,19 +1,27 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import DownArrow from '../../../assets/icons/downarrow';
 import TaskDetailRow from './taskDetailRow';
 import TaskDetailHeader from './taskDetailHeader';
+import TaskdetailsModal from './TaskdetailsModal';
 
 export default function TaskDetails() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('ALL'); 
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setModalVisible(false);
+  };
   return (
     <View style={styles.container}>
       <View style={{padding: 15}}>
         <View style={[styles.taskDetails, {justifyContent: 'space-between'}]}>
           <TaskDetailHeader title={'Task details'} count={'03'} />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
             <View style={styles.allBox}>
               <View style={[styles.taskDetails, {gap: 5, padding: 5}]}>
-                <Text style={styles.all}>ALL</Text>
+                <Text style={styles.all}>{selectedOption}</Text>
                 <DownArrow />
               </View>
             </View>
@@ -52,6 +60,12 @@ export default function TaskDetails() {
           />
         </View>
       </View>
+      <TaskdetailsModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSelect={handleOptionSelect}
+        selectedOption={selectedOption}  // Pass the selected option
+      />
     </View>
   );
 }
@@ -64,7 +78,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 2,
     elevation: 2,
-    shadowColor: 'rgb(0,0,0,0.5)'
+    shadowColor: 'rgb(0,0,0,0.5)',
   },
   taskDetails: {
     flexDirection: 'row',
