@@ -4,8 +4,8 @@ import { styles } from './MemberStyle';
 
 export default function Members({memberNmae , onPress}) {
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.9}>
-      <View style={styles.mainCont}>
+    <TouchableOpacity style={styles.mainCont} onPress={onPress} activeOpacity={0.9}>
+      
         <View style={styles.container}>
           <Text style={styles.label}>{memberNmae}</Text>
           <View style={styles.avatarsContainer}>
@@ -29,7 +29,7 @@ export default function Members({memberNmae , onPress}) {
             </View>
           </View>
         </View>
-      </View>
+      
     </TouchableOpacity>
   );
 }
