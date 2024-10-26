@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     color: '#000',
     fontSize: 16,
     fontWeight: '900',
+    paddingLeft: 5,
   },
   avatarsContainer: {
     flexDirection: 'row',

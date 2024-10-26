@@ -4,12 +4,14 @@ import DownArrow from '../../../assets/icons/downarrow';
 import TaskDetailRow from './taskDetailRow';
 import TaskDetailHeader from './taskDetailHeader';
 import TaskdetailsModal from './TaskdetailsModal';
+import {useNavigation} from '@react-navigation/native';
 
 export default function TaskDetails() {
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('ALL'); 
+  const [selectedOption, setSelectedOption] = useState('ALL');
+  const navigation = useNavigation();
 
-  const handleOptionSelect = (option) => {
+  const handleOptionSelect = option => {
     setSelectedOption(option);
     setModalVisible(false);
   };
@@ -35,6 +37,7 @@ export default function TaskDetails() {
             title={'Wireframes'}
             id={'ID 0214'}
             date={'05/09/23'}
+            onPress={() => navigation.navigate('Wireframes')}
           />
           <View style={styles.divider} />
         </View>
@@ -46,6 +49,7 @@ export default function TaskDetails() {
             title={'Inspection'}
             id={'ID 0212'}
             date={'04/09/23'}
+            onPress={() => navigation.navigate('InspectionPage')}
           />
           <View style={styles.divider} />
         </View>
@@ -57,6 +61,7 @@ export default function TaskDetails() {
             title={'Base layout'}
             id={'ID 0.01'}
             date={'02/09/23'}
+            onPress={() => navigation.navigate('BaseLayout')}
           />
         </View>
       </View>
@@ -64,7 +69,7 @@ export default function TaskDetails() {
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         onSelect={handleOptionSelect}
-        selectedOption={selectedOption}  // Pass the selected option
+        selectedOption={selectedOption} // Pass the selected option
       />
     </View>
   );

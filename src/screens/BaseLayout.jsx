@@ -1,12 +1,13 @@
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import {StyleSheet, View, ScrollView} from 'react-native';
 import Appbar from '../components/metanasUI/Appbar';
-import ProjectInfo from '../components/metanasUI/projectinfoComp/ProjectInfo';
-import TaskDetails from '../components/metanasUI/taskdetailsComp/taskDetails';
-import Assets from '../components/metanasUI/assetComp/Assets';
-import Documents from '../components/metanasUI/documentsComp/DocumentsBox';
-import BottomSheetModal from '../components/metanasUI/membersComp/MemberBottomsheet';
+import TaskInfo from '../components/wireframesPage/taskinfoComp/TaskInfo';
+import Checklist from '../components/wireframesPage/checkListComp/CheckList';
+import {useNavigation} from '@react-navigation/native';
+import Logexpense from '../components/wireframesPage/logExpenseComp/LogExpense';
 import Members from '../components/metanasUI/membersComp/Members';
+import CommentSection from '../components/wireframesPage/Comments';
+import BottomSheetModal from '../components/metanasUI/membersComp/MemberBottomsheet';
 
 const membersData = [
   {
@@ -35,21 +36,20 @@ const membersData = [
   },
 ];
 
-export default function MetanasDesign() {
+export default function     () {
   const [modalVisible, setModalVisible] = useState(false);
-
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Appbar title={'Metanas UI Design'} onPress={null} />
+      <Appbar title={'Base Layout'} onPress={() => navigation.goBack()} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        <ProjectInfo />
-        <TaskDetails />
-        <Members memberNmae={'Members'} onPress={() => setModalVisible(true)} />
-        <Assets />
-        <Documents />
+        <TaskInfo />
+        <Checklist />
+        <Logexpense />
+        <Members memberNmae={'Users'} onPress={() => setModalVisible(true)} />
+        <CommentSection />
       </ScrollView>
 
-      {/* Use the Bottom Sheet Modal component */}
       <BottomSheetModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
@@ -69,10 +69,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 15,
     marginHorizontal: 15,
-  },
-  membersButton: {
-    fontSize: 18,
-    color: '#007BFF',
-    marginVertical: 10,
   },
 });

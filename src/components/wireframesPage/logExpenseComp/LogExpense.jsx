@@ -32,7 +32,7 @@ export default function Logexpense() {
 
   return (
     <View style={styles.container}>
-      <View st yle={styles.headerContainer}>
+      <View style={styles.headerContainer}>
         <TaskDetailHeader
           title={'Log expense'}
           count={formatCount(expenses.length)}

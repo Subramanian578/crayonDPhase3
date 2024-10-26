@@ -6,6 +6,8 @@ import MetanasDesign from '../screens/Metanasdesign';
 import Wireframes from '../screens/Wireframes';
 import DocumentsPage from '../screens/Documents';
 import MoreDocuments from '../screens/DocumentNavi';
+import InspectionPage from '../screens/InspectionPage';
+import BaseLayout from '../screens/BaseLayout';
 
 const Stack = createNativeStackNavigator ();
 
@@ -19,6 +21,8 @@ export default function Navigation() {
         <Stack.Screen name="DocumentsPage" component={DocumentsPage} />
         <Stack.Screen name="MoreDocuments" component={MoreDocuments} />
         <Stack.Screen name="Wireframes" component={Wireframes} />
+        <Stack.Screen name="InspectionPage" component={InspectionPage} />
+        <Stack.Screen name="BaseLayout" component={BaseLayout} />
       </Stack.Navigator>
     </NavigationContainer>
   );

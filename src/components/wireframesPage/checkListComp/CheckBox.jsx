@@ -31,7 +31,6 @@ export default function Checkbox() {
             </View>
             <Text style={styles.taskLabel}>{task.label}</Text>
           </TouchableOpacity>
-          {/* Conditionally render a divider if it's not the last task */}
           {index !== tasks.length - 1 && <View style={styles.divider} />}
         </View>
       ))}
