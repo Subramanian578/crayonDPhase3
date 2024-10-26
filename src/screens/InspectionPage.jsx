@@ -2,7 +2,7 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Appbar from '../components/metanasUI/Appbar';
 import {useNavigation} from '@react-navigation/native';
-import Tasks from '../components/InspectionPage/Tasks';
+import Tasks from '../components/inspectionPage/Tasks';
 
 export default function InspectionPage() {
   const navigation = useNavigation();
