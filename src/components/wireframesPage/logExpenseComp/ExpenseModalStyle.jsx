@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     gap: 5,
     backgroundColor: 'white',
     padding: 15,
@@ -50,6 +49,7 @@ export const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   amountcry: {
     flexDirection: 'row',
@@ -97,6 +97,7 @@ export const styles = StyleSheet.create({
   },
   input: {
     paddingLeft: 10,
+    paddingTop: 7,
     height: 40,
     borderWidth: 0,
     color: 'black',
@@ -159,5 +160,23 @@ export const styles = StyleSheet.create({
   divider: {
     height: 1,
     backgroundColor: 'rgb(227, 228, 230)',
+  },
+  option: {
+    paddingVertical: 15,
+    backgroundColor: 'white', // Default background color
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  selectedOption: {
+    backgroundColor: 'rgb(215, 227, 255)', // Background color for selected item
+  },
+  optionText: {
+    color: 'black',
+    fontSize: 16,
+    paddingHorizontal: 15,
+  },
+  selectedOptionText: {
+    fontWeight: 'bold',
+    color: 'rgb(12, 53, 106)',
   },
 });

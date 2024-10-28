@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
   date: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // gap: 15,
   },
   data: {
     color: 'rgb(78, 88, 94)',

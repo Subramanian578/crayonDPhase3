@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import RightArrow from '../../../assets/icons/Rightarrow';
-import {useNavigation} from '@react-navigation/native';
 
 export default function TaskDetailRow({
   boxContent,
@@ -10,28 +9,28 @@ export default function TaskDetailRow({
   title,
   id,
   date,
+  onPress
 }) {
-  const navigation = useNavigation();
   return (
     <View>
-      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-        <View>
-          <Text style={styles.text}>{title}</Text>
-          <View style={[styles.boxes, {paddingTop: 10}]}>
-            <Text style={styles.rowText}>{id}</Text>
-            <Text style={styles.ordercss}>•</Text>
-            <Text style={styles.rowText}>{date}</Text>
+      <TouchableOpacity onPress={onPress}>
+        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <View>
+            <Text style={styles.text}>{title}</Text>
+            <View style={[styles.boxes, {paddingTop: 11}]}>
+              <Text style={styles.rowText}>{id}</Text>
+              <Text style={styles.ordercss}>•</Text>
+              <Text style={styles.rowText}>{date}</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.boxes}>
-          <TouchableOpacity onPress={() => navigation.navigate('Wireframes')}>
+          <View style={styles.boxes}>
             <View style={[styles.allBox, {backgroundColor: textBoxColor}]}>
               <Text style={[styles.all, {color: textColor}]}>{boxContent}</Text>
             </View>
-          </TouchableOpacity>
-          <RightArrow />
+            <RightArrow />
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

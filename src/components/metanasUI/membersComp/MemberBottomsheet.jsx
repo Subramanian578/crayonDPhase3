@@ -7,7 +7,7 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import { styles } from './MemberBottomStyle';
+import {styles} from './MemberBottomStyle';
 
 const BottomSheetModal = ({visible, onClose, data}) => {
   const renderMemberItem = ({item}) => (
@@ -31,23 +31,25 @@ const BottomSheetModal = ({visible, onClose, data}) => {
       transparent={true}
       visible={visible}
       onRequestClose={onClose}>
-      <View style={styles.modalContainer}>
-        <View style={styles.bottomSheet}>
-          <Text style={styles.sheetTitle}>Members</Text>
-          <Text style={styles.memberCount}>{`${String(data.length).padStart(
-            2,
-            '0',
-          )} Members`}</Text>
-          <FlatList
-            data={data}
-            keyExtractor={item => item.email}
-            renderItem={renderMemberItem}
-          />
-          <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-            <Text style={styles.closeButtonText}>Close</Text>
-          </TouchableOpacity>
+      <TouchableOpacity  style={styles.modalContainer} onPress={onClose} activeOpacity={1}>
+        <View>
+          <View style={styles.bottomSheet}>
+            <Text style={styles.sheetTitle}>Members</Text>
+            <Text style={styles.memberCount}>{`${String(data.length).padStart(
+              2,
+              '0',
+            )} Members`}</Text>
+            <FlatList
+              data={data}
+              keyExtractor={item => item.email}
+              renderItem={renderMemberItem}
+            />
+            <TouchableOpacity style={styles.closeButton} onPress={onClose}>
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 };

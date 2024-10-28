@@ -3,8 +3,16 @@ import React, {useState} from 'react';
 import AnimatedText from '../../metanasUI/AnimatedText';
 import DownArrow from '../../../assets/icons/downarrow';
 import {styles} from './TaskinfoStyle';
+import TaskdetailsModal from '../../metanasUI/taskdetailsComp/TaskdetailsModal';
 
 export default function TaskInfo() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('ALL');
+
+  const handleOptionSelect = option => {
+    setSelectedOption(option);
+    setModalVisible(false);
+  };
   return (
     <View style={styles.container}>
       <View style={{padding: 15}}>
@@ -19,11 +27,11 @@ export default function TaskInfo() {
             <Text style={styles.ordercss}>•</Text>
             <Text style={styles.all}>05/09/23</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
             <View style={styles.allBox}>
               <View
                 style={[styles.taskDetails, {gap: 5, paddingHorizontal: 5}]}>
-                <Text style={styles.all}>Yet to start</Text>
+                <Text style={styles.all}>{selectedOption}</Text>
                 <DownArrow />
               </View>
             </View>
@@ -46,6 +54,12 @@ export default function TaskInfo() {
           </View>
         </View>
       </View>
+      <TaskdetailsModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSelect={handleOptionSelect}
+        selectedOption={selectedOption} // Pass the selected option
+      />
     </View>
   );
 }

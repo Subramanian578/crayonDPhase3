@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     borderRadius: 15,
     backgroundColor: 'white',
     shadowOpacity: 0.3,
@@ -15,10 +14,12 @@ export const styles = StyleSheet.create({
     color: '#000',
     fontSize: 16,
     fontWeight: '900',
-    marginBottom: 10,
+    padding: 10,
   },
   assetsContainer: {
     flexDirection: 'row',
+    marginHorizontal: 10,
+    marginBottom: 10,
   },
   cardContainer: {
     alignItems: 'center',
