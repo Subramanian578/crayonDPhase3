@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,64 +7,81 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { addComment as addReduxComment } from '../../redux/store/CommentSlice';
+import useCommentStore from '../../zustand/useCommentStore';
 import Shareicon from '../../assets/icons/share';
+import moment from 'moment';
+
 const CommentSection = () => {
+  const [text, setText] = useState('');
+  
+  // Redux
+  const dispatch = useDispatch();
+  const reduxComments = useSelector((state) => state.comments.comments);
+  
+  // Zustand
+  const { comments: zustandComments, addComment: addZustandComment } = useCommentStore();
+
+  const handleShare = () => {
+    if (text.trim()) {
+      const newComment = {
+        id: Date.now(), // Ensure this is unique
+        author: 'You',
+        time: moment(),
+        text,
+      };
+      dispatch(addReduxComment(newComment));       
+      addZustandComment(newComment);              
+      setText('');
+    }
+  };
+
+  // Combine comments from both stores and filter out duplicates based on ID
+  const combinedComments = [...reduxComments, ...zustandComments];
+  const uniqueComments = Array.from(new Set(combinedComments.map(comment => comment.id)))
+    .map(id => combinedComments.find(comment => comment.id === id));
+
+    console.log(uniqueComments);
+
   return (
     <View style={styles.container}>
-      <View style={{padding: 15}}>
+      <View style={{ padding: 15 }}>
         <Text style={styles.title}>Comments</Text>
 
-        <View style={styles.comment}>
-          <Image
-            source={{
-              uri: 'https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg',
-            }}
-            style={styles.avatar2}
-          />
-          <View style={styles.commentContent}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                paddingBottom: 8,
-              }}>
-              <Text style={styles.commentAuthor}>Hamza</Text>
-              <Text style={styles.commentTime}>1 day ago</Text>
+        {uniqueComments.map((comment, index) => (
+          <View key={comment.id} style={styles.comment}> 
+            <Image
+              source={{
+                uri: 'https://imgs.search.brave.com/Yg7uzVhgy4dLzMi81rKCh8Y95ffeRNfkSjIF575tuxA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vcGljanVt/Ym8uY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy9idXNpbmVzcy1t/YW4tcGhvdG8tcG9y/dHJhaXQtaW4tb2Zm/aWNlLWJ1aWxkaW5n/LWZyZWUtcGhvdG8u/anBnP3c9NjAwJnF1/YWxpdHk9ODA',
+              }}
+              style={styles.avatar2}
+            />
+            <View style={styles.commentContent}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  paddingBottom: 8,
+                }}
+              >
+                <Text style={styles.commentAuthor}>{comment.author}</Text>
+                <Text style={styles.commentTime}>{comment.time.fromNow()}</Text>
+              </View>
+              <Text style={styles.commentText}>{comment.text}</Text>
             </View>
-            <Text style={styles.commentText}>
-              harum quidem rerum facilis est et expedita distinctio. Nam libero
-              tempore, cum nobis.
-            </Text>
           </View>
-        </View>
+        ))}
 
-        <View style={styles.comment}>
-          <Image
-            source={{
-              uri: 'https://i.pinimg.com/736x/c6/34/60/c6346030acb7a780af81803c84a06680.jpg',
-            }}
-            style={styles.avatar2}
-          />
-          <View style={styles.commentContent}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                paddingBottom: 8,
-              }}>
-              <Text style={styles.commentAuthor}>Mohammed</Text>
-              <Text style={styles.commentTime}>12 hrs ago</Text>
-            </View>
-            <Text style={styles.commentText}>Sure, Thanks</Text>
-          </View>
-        </View>
         <View style={styles.textinputBox}>
           <TextInput
             style={styles.input}
             placeholder="Add comments"
             placeholderTextColor={'grey'}
+            value={text}
+            onChangeText={setText}
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleShare}>
             <Shareicon />
           </TouchableOpacity>
         </View>
@@ -85,7 +102,7 @@ const styles = StyleSheet.create({
   },
   comment: {
     flexDirection: 'row',
-    marginBottom: 10,
+    marginVertical: 10,
   },
   avatar2: {
     width: 50,
@@ -112,6 +129,7 @@ const styles = StyleSheet.create({
   input: {
     color: 'black',
     fontSize: 12,
+    flex: 1,
   },
   title: {
     color: '#000',
@@ -121,7 +139,6 @@ const styles = StyleSheet.create({
   },
   textinputBox: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'rgb(240, 243, 246)',
     borderRadius: 25,

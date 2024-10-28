@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 
 export default function AnimatedText() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const animation = useRef(new Animated.Value(0)).current; // Initial animation height value
+  const animation = useRef(new Animated.Value(0)).current;
   
   useEffect(() => {
     Animated.timing(animation, {
@@ -15,7 +15,7 @@ export default function AnimatedText() {
 
   const heightInterpolate = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [39, 158], // Adjust these values for collapsed and expanded height
+    outputRange: [39, 158],
   });
 
   return (
